@@ -2,10 +2,10 @@ import streamlit as st
 import openai
 import os
 
-
 st.set_page_config(page_title="AI 冷知識卡", page_icon="💡")
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# 初始化 OpenAI client
+client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 st.title("今天的冷知識卡 💡")
 
@@ -17,14 +17,10 @@ product = st.selectbox(
 if st.button("產生冷知識"):
     prompt = f"請針對「{product}」生成一段有趣的冷知識，約 30 字內。內容要生活化、有趣，讓人願意分享。"
 
-
-    response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # 使用一個現有的模型，根據需要調整
-        prompt=prompt,
-        max_tokens=100  # 控制生成內容的長度
+    response = client.chat.completions.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "user", "content": prompt}]
     )
 
-    output = response.choices[0].text.strip()  # 根據新 API 的結構取得回應
+    output = response.choices[0].message.content.strip()
     st.success(f"你知道嗎？\n\n{output}")
-
-
