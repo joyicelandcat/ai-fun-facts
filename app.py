@@ -5,7 +5,8 @@ import os
 st.set_page_config(page_title="AI 冷知識卡", page_icon="💡")
 
 # 初始化 OpenAI client
-client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"]
+)
 
 st.title("今天的冷知識卡 💡")
 
