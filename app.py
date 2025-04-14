@@ -1,6 +1,7 @@
 import streamlit as st
 import openai
 import os
+st.write("金鑰是否有抓到？", st.secrets.get("OPENAI_API_KEY"))
 
 st.set_page_config(page_title="AI 冷知識卡", page_icon="💡")
 
