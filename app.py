@@ -1,10 +1,10 @@
 import streamlit as st
 import openai
 import os
-st.write("目前 secrets 有哪些 keys：", list(st.secrets.keys()))
 
 
 st.set_page_config(page_title="AI 冷知識卡", page_icon="💡")
+st.write("目前 secrets 有哪些 keys：", list(st.secrets.keys()))
 
 # 初始化 OpenAI client
 client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"]
