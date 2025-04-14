@@ -2,13 +2,12 @@ import streamlit as st
 import openai
 import os
 
-print(openai.__version__)
 
 st.set_page_config(page_title="AI 冷知識卡", page_icon="💡")
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-st.title(openai.__version__)
+st.title("今天的冷知識卡 💡")
 
 product = st.selectbox(
     "請選擇一項商品或主題：",
